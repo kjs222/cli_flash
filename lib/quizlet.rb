@@ -2,7 +2,6 @@ require 'thor'
 require 'faraday'
 require 'json'
 require 'figaro'
-require 'pry'
 
 ENV['FIGARO_ENVIRONMENT'] = "#{ENV['RACK_ENV']}" || 'development'
 
@@ -23,8 +22,4 @@ class QuizletCLI < Thor
       end
     end
 
-
 end
-
-
-QuizletCLI.start(ARGV)

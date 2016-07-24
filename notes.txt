@@ -1,0 +1,14 @@
+Steps needed to run program without needing to prepend ruby and path to file
+
+1.  tell shell what interpreter to use: #!/usr/bin/env ruby   -- in bin/quizlet file
+2.  make the file executable:  chmod +x bin/quizlet  -- from command line
+3.  add scipt to shell's lookup path:  export PATH=/Users/seacreature/devel/rcat/bin:$PATH  -- from command line
+
+ISSUES:
+*  #3 above didn't work for me yet
+
+QUESTIONS:
+*  How can I make the above steps happen more automatically for a future user
+*  My token is hard coded into the application yml file.  How will the user get their token from my web app?  Maybe my web app will have an api endpoint that returns it for them?
+*  can the inclusion of the token be more automatic for the user?  (Aside, in current app, user will need to make their own application yml file before the could add token to it)
+*  how does this program integrate with webapp
