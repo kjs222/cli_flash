@@ -1,15 +1,7 @@
 require 'thor'
 require 'faraday'
 require 'json'
-require 'figaro'
 require 'pry'
-
-
-ENV['FIGARO_ENVIRONMENT'] = "#{ENV['RACK_ENV']}" || 'development'
-
-Figaro.application = Figaro::Application.new(environment: ENV['FIGARO_ENVIRONMENT'], path: 'application.yml')
-
-Figaro.load
 
 class QuizletCLI < Thor
 
