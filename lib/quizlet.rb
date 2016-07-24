@@ -31,19 +31,17 @@ class QuizletCLI < Thor
 
   desc "get_token UID PASSWORD", "gets token and sets it as env variable"
     def get_token(uid, password)
-      if uid.to_s.empty? || password.to_s.empty?
-        puts "syntax is: get_token uid password"
-      else
-        connection = Faraday.new('http://localhost:3000')
-        data = connection.get("/api/v1/authenticate?uid=#{uid}&password=#{password}")
-        parsed_data = JSON.parse(data.body)
-        token = parsed_data["token"]
-        uid = parsed_data["uid"]
-        File.open("/tmp/credentials.txt",'w') do |file|
-          file.puts uid
-          file.puts token
-        end
+      connection = Faraday.new('http://localhost:3000')
+      data = connection.get("/api/v1/authenticate?uid=#{uid}&password=#{password}")
+      parsed_data = JSON.parse(data.body)
+      #add if/else on here for if these are "User not found"
+      token = parsed_data["token"]
+      uid = parsed_data["uid"]
+      File.open("/tmp/credentials.txt",'w') do |file|
+        file.puts uid
+        file.puts token
       end
+      puts "Success: credentials have been saved"
     end
 
     desc "set credentials", "sets uid and token"
