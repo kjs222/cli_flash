@@ -7,6 +7,6 @@ begin
   # Quizlet::Application.new(ARGV).run
 rescue Errno::ENOENT => err
   abort "quizlet: #{err.message}"
-rescue OptionParser::InvalidOption => err
-  abort "quizlet: #{err.message}\nusage: quizlet [-bns] [file ...]"
+# rescue OptionParser::InvalidOption => err
+#   abort "quizlet: #{err.message}\nusage: quizlet [-bns] [file ...]"
 end
