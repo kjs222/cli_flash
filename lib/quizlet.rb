@@ -38,7 +38,7 @@ class QuizletCLI < Thor
 
     desc "set credentials", "sets uid and token"
     def set_credentials
-      token = ''
+      token = '' 
       uid = ''
       open("/tmp/credentials.txt") do |f|
         uid = f.readlines[0].chomp
