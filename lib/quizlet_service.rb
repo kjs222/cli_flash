@@ -43,5 +43,9 @@ class QuizletService
     @connection.post("/2.0/sets/#{set_id}/terms?term=#{term}&definition=#{definition}")
   end
 
+  def add_set(title)
+    @connection.post("2.0/sets?title=#{title}&terms[]=x&definitions[]=x&terms[]=y&definitions[]=y&lang_terms=en&lang_definitions=en&description=command_line")
+  end
+
 
 end

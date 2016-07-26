@@ -60,7 +60,14 @@ describe "QuizletService" do
 
   end
 
-
-
+  it "adds a new set" do
+    qs = QuizletService.new("kjs222", TOKEN)
+    qs.add_set("new set")
+    VCR.use_cassette("add_set") do
+      results = qs.get_quizsets
+      expect(results.count).to eq(14)
+      expect(results.first['title']).to eq("new set")
+    end
+  end
 
 end
