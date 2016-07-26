@@ -7,11 +7,11 @@ class QuizletCLI < Thor
 
   desc "quizsets", "Returns the titles for all of your quiz sets"
     def quizsets
-      id, token = AuthenticationService.read_credentials
-      if token == ''
-        puts "Not authenticated.  Call 'authenticate uid password'"
-      else
+      if File.exists?("/tmp/credentials.txt")
+        id, token = AuthenticationService.read_credentials
         QuizletService.new(id, token).display_quizsets
+      else
+        puts "Not authenticated.  Call 'quizlet authenticate uid password'"
       end
     end
 
@@ -19,17 +19,5 @@ class QuizletCLI < Thor
     def authenticate(uid, password)
       AuthenticationService.new(uid, password).authenticate
     end
-
-    # desc "set credentials", "sets uid and token"
-    # def set_credentials
-    #   token = ''
-    #   uid = ''
-    #   open("/tmp/credentials.txt") do |f|
-    #     uid = f.readlines[0].chomp
-    #     f.rewind
-    #     token = f.readlines[1].chomp
-    #   end
-    #   [uid, token]
-    # end
 
 end

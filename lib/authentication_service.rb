@@ -25,16 +25,10 @@ class AuthenticationService
   end
 
   def self.read_credentials
-    token = ''
-    id = ''
-    open("/tmp/credentials.txt") do |f|
-      id = f.readlines[0].chomp
-      f.rewind
-      token = f.readlines[1].chomp
-    end
+    id = IO.readlines("/tmp/credentials.txt")[0].chomp
+    token = IO.readlines("/tmp/credentials.txt")[1].chomp
     [id, token]
   end
-
 
   def authenticate
     credentials = get_credentials
@@ -45,6 +39,5 @@ class AuthenticationService
       puts "Success: credentials have been saved"
     end
   end
-
 
 end
