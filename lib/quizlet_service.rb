@@ -26,15 +26,21 @@ class QuizletService
 
   def get_set_id_from_title(title)
     set = get_quizsets.find do |quizset|
-      quizset["title"] = title
+      quizset["title"] == title
     end
     set["id"]
   end
 
-  def list_terms_in_set(title)
+  def get_terms_in_set(title)
     set_id = get_set_id_from_title(title)
     data = @connection.get("2.0/sets/#{set_id}/terms")
     JSON.parse(data.body)
+  end
+
+  def display_terms(title)
+    get_terms_in_set(title).each do |term|
+      puts term["term"]
+    end
   end
 
 

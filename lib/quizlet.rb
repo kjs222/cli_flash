@@ -20,4 +20,21 @@ class QuizletCLI < Thor
       AuthenticationService.new(uid, password).authenticate
     end
 
+  desc "terms TITLE", "gets terms and displays them as output"
+    def terms(*title)
+      new_title = title.join(' ')
+      id, token = AuthenticationService.read_credentials
+      QuizletService.new(id, token).display_terms(new_title)
+    end
+
+  desc "add_term TITLE", "adds a term to a set"
+    def add_term(*title)
+      new_title = title.join(' ')
+      term = ask("Term: ")
+      definition = ask("Definition: ")
+      id, token = AuthenticationService.read_credentials
+      QuizletService.new(id, token).add_term_to_set(new_title, term, definition)
+    end
+
+
 end
