@@ -25,7 +25,6 @@ class QuizletService
   end
 
   def get_set_id_from_title(title)
-    # binding.pry
     set = get_quizsets.find do |quizset|
       quizset["title"] == title
     end
