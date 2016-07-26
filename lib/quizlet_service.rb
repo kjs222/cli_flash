@@ -25,6 +25,7 @@ class QuizletService
   end
 
   def get_set_id_from_title(title)
+    # binding.pry
     set = get_quizsets.find do |quizset|
       quizset["title"] == title
     end
@@ -42,7 +43,6 @@ class QuizletService
       puts term["term"]
     end
   end
-
 
   def add_term_to_set(title, term, definition)
     set_id = get_set_id_from_title(title)

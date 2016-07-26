@@ -37,27 +37,33 @@ describe "QuizletService" do
   it "finds an id from a title" do
     qs = QuizletService.new("kjs222", TOKEN)
     VCR.use_cassette("quizsets") do
-      id = qs.get_set_id_from_title("oath technical")
+      id = qs.get_set_id_from_title("oauth technical")
       expect(id).to eq(145163778)
     end
   end
 
   it "get terms given a title" do
     qs = QuizletService.new("kjs222", TOKEN)
-    VCR.use_cassette("terms") do
+    # VCR.use_cassette("terms") do
       terms = qs.get_terms_in_set("test")
       expect(terms.first["term"]).to eq("first name")
-    end
+    # end
   end
 
   it "adds a terms to a set given a title" do
     qs = QuizletService.new("kjs222", TOKEN)
     VCR.use_cassette("add_terms") do
       qs.add_term_to_set("test", "term-1", "definition-1")
-      terms = qs.list_terms_in_set("test")
+      terms = qs.get_terms_in_set("test")
       expect(terms[-1]["term"]).to eq("term-1")
     end
+  end
 
+  it "prints quizset terms" do
+    qs = QuizletService.new("kjs222", TOKEN)
+      qs.display_terms("oauth technical")
+      expect($stdout.string).to include('first oauth technical step')
+      expect($stdout.string).to include('fourth oauth technical step')
   end
 
   it "adds a new set" do
