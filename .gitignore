@@ -1,1 +1,2 @@
 spec/token.rb
+spec/cassettes/*
