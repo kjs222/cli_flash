@@ -9,7 +9,7 @@ class AuthenticationService
   def initialize(uid, password)
     @uid = uid
     @password = password
-    @connection = Faraday.new('http://localhost:3000')
+    @connection = Faraday.new('http://127.0.0.1:3000')
   end
 
   def get_credentials

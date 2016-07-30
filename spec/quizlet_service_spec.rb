@@ -5,8 +5,6 @@ require_relative 'token.rb'
 require_relative 'spec_helper'
 require 'stringio'
 
-
-
 describe "QuizletService" do
   before(:each) do
     $stdout = StringIO.new
