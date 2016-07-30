@@ -15,8 +15,8 @@ class QuizletCLI < Thor
       end
     end
 
-  desc "get_token UID PASSWORD", "gets token and sets it as env variable"
-    def authenticate(uid, password)
+  desc "setup UID PASSWORD", "gets token and sets it as env variable"
+    def setup(uid, password)
       AuthenticationService.new(uid, password).authenticate
     end
 

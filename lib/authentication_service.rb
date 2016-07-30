@@ -4,29 +4,31 @@ require 'pry'
 
 class AuthenticationService
 
-  attr_reader :uid, :password
+  attr_reader :nickname, :password
 
-  def initialize(uid, password)
-    @uid = uid
+  def initialize(nickname, password)
+    @nickname = nickname
     @password = password
+    # figure out how ot make this work for dev and prod
     @connection = Faraday.new('http://127.0.0.1:3000')
   end
 
   def get_credentials
-    data = @connection.get("/api/v1/authenticate?uid=#{uid}&password=#{password}")
+    data = @connection.get("/api/v1/authenticate?nickname=#{nickname}&password=#{password}")
     JSON.parse(data.body)
   end
 
   def write_credentials_to_file(credentials)
     File.open("/tmp/credentials.txt",'w') do |file|
-      file.puts credentials["uid"]
-      file.puts credentials['token']
+      file.puts credentials["id"]
+      file.puts credentials["quiz_id"]
+      file.puts credentials['quiz_token']
     end
   end
 
   def self.read_credentials
-    id = IO.readlines("/tmp/credentials.txt")[0].chomp
-    token = IO.readlines("/tmp/credentials.txt")[1].chomp
+    id = IO.readlines("/tmp/credentials.txt")[1].chomp
+    token = IO.readlines("/tmp/credentials.txt")[2].chomp
     [id, token]
   end
 
