@@ -1,6 +1,5 @@
 require 'faraday'
 require 'json'
-require 'pry'
 
 class QuizletService
 

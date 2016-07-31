@@ -26,10 +26,14 @@ class AuthenticationService
     end
   end
 
-  def self.read_credentials
-    id = IO.readlines("/tmp/credentials.txt")[1].chomp
-    token = IO.readlines("/tmp/credentials.txt")[2].chomp
-    [id, token]
+  def self.read_quizlet_credentials
+    quiz_id = IO.readlines("/tmp/credentials.txt")[1].chomp
+    quiz_token = IO.readlines("/tmp/credentials.txt")[2].chomp
+    [quiz_id, quiz_token]
+  end
+
+  def self.read_user_id
+    IO.readlines("/tmp/credentials.txt")[0].chomp
   end
 
   def authenticate

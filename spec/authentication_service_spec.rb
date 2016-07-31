@@ -2,27 +2,28 @@ require 'rspec'
 require 'faraday'
 require './lib/authentication_service.rb'
 require_relative 'token.rb'
+require 'pry'
 
 describe "AuthenticationService" do
   it "gets credentials from API for an existing user with correct credentials" do
     as = AuthenticationService.new("kjs222", "password")
     results = as.get_credentials
-    expect(results['uid']).to eq("kjs222")
-    expect(results['token']).to eq(TOKEN)
+    expect(results['quiz_id']).to eq("kjs222")
+    expect(results['quiz_token']).to eq(TOKEN)
   end
 
   it "gets user not found credentials from API for an existing user with incorrect credentials" do
     as = AuthenticationService.new("kjs222", "NOTpassword")
     results = as.get_credentials
-    expect(results['uid']).to eq("User not found")
-    expect(results['token']).to eq("User not found")
+    expect(results['quiz_id']).to eq("User not found")
+    expect(results['quiz_token']).to eq("User not found")
   end
 
   it "gets user not found credentials from API for a non registered cli user" do
     as = AuthenticationService.new("NOTkjs222", "password")
     results = as.get_credentials
-    expect(results['uid']).to eq("User not found")
-    expect(results['token']).to eq("User not found")
+    expect(results['quiz_id']).to eq("User not found")
+    expect(results['quiz_token']).to eq("User not found")
   end
 
 
@@ -35,8 +36,8 @@ describe "AuthenticationService" do
 
     expect(File.exists?("/tmp/credentials.txt")).to eq(true)
 
-    expect(IO.readlines("/tmp/credentials.txt")[0].chomp).to eq("kjs222")
-    expect(IO.readlines("/tmp/credentials.txt")[1].chomp).to eq(TOKEN)
+    expect(IO.readlines("/tmp/credentials.txt")[1].chomp).to eq("kjs222")
+    expect(IO.readlines("/tmp/credentials.txt")[2].chomp).to eq(TOKEN)
   end
 
   it "reads credentials from file" do
@@ -44,7 +45,7 @@ describe "AuthenticationService" do
     if !File.exists?("/tmp/credentials.txt")
       as.write_credentials_to_file(as.get_credentials)
     end
-    results = AuthenticationService.read_credentials
+    results = AuthenticationService.read_quizlet_credentials
     expect(results).to eq(['kjs222', TOKEN])
   end
 
