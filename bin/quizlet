@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/quizlet"
+require_relative "../lib/codepoints"
 
 begin
-  QuizletCLI.start(ARGV)
+  CodepointsCLI.start(ARGV)
 rescue Errno::ENOENT => err
   abort "quizlet: #{err.message}"
 # rescue OptionParser::InvalidOption => err

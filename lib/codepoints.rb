@@ -3,7 +3,7 @@ require_relative 'quizlet_service'
 require_relative 'session_service'
 require_relative 'authentication_service'
 
-class QuizletCLI < Thor
+class CodepointsCLI < Thor
 
   desc "quizsets", "Returns the titles for all of your quiz sets"
     def quizsets
