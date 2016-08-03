@@ -5,7 +5,5 @@ require_relative "../lib/codepoints"
 begin
   CodepointsCLI.start(ARGV)
 rescue Errno::ENOENT => err
-  abort "quizlet: #{err.message}"
-# rescue OptionParser::InvalidOption => err
-#   abort "quizlet: #{err.message}\nusage: quizlet [-bns] [file ...]"
+  abort "codepoints: #{err.message}"
 end
