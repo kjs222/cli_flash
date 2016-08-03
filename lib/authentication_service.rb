@@ -9,7 +9,7 @@ class AuthenticationService
   def initialize(nickname, password)
     @nickname = nickname
     @password = password
-    @connection = Faraday.new('https://codepoints.herokuapp.com')
+    @connection = Faraday.new('http://codepoints.herokuapp.com')
   end
 
   def get_credentials

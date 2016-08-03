@@ -5,7 +5,7 @@ require 'pry'
 class SessionService
 
   def initialize
-    @connection = Faraday.new('https://codepoints.herokuapp.com')
+    @connection = Faraday.new('http://codepoints.herokuapp.com')
   end
 
   def credentials_missing?
