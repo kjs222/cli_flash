@@ -1,6 +1,6 @@
 ### Getting Started
 
-This is the command line application to be used with the [codepoints app](www.codepoints.herokuapp.com).  You must activate the command line app from codepoints in oder to use.
+This is the command line application to be used with the [codepoints app] (https://codepoints.herokuapp.com/).  You must activate the command line app from the website in order to use.
 
 
 Clone the repo to your desired directory:
@@ -21,7 +21,12 @@ Now you can run the program:
 
 `codepoints help`
 
-Commands:
+To setup your credentials one time, you must use the following command (UID is your codepoints nickname and password is your codepoints password)
+
+`codepoints setup UID PASSWORD`  # gets token and sets it as env variable
+
+
+All commands:
 
  `codepoints add_term TITLE`      # adds a term to a set
 

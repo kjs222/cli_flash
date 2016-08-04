@@ -64,7 +64,7 @@ describe "QuizletService" do
       expect($stdout.string).to include('fourth oauth technical step')
   end
 
-  it "adds a new set" do
+  xit "adds a new set" do
     qs = QuizletService.new("kjs222", TOKEN)
     qs.add_set("new set")
     VCR.use_cassette("add_set") do
