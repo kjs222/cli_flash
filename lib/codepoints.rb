@@ -11,13 +11,13 @@ class CodepointsCLI < Thor
         id, token = AuthenticationService.read_quizlet_credentials
         QuizletService.new(id, token).display_quizsets
       else
-        puts "Not authenticated.  Call 'quizlet authenticate uid password'"
+        puts "Not authenticated.  Call 'quizlet authenticate nickname password'"
       end
     end
 
-  desc "setup UID PASSWORD", "gets token and sets it as env variable"
-    def setup(uid, password)
-      AuthenticationService.new(uid, password).authenticate
+  desc "setup NICKNAME PASSWORD", "verifies user and sets gets token for api"
+    def setup(nickname, password)
+      AuthenticationService.new(nickname, password).authenticate
     end
 
   desc "terms TITLE", "gets terms and displays them as output"
@@ -45,18 +45,16 @@ class CodepointsCLI < Thor
 
     desc "start SKILL_NAME", "starts a pratice session"
       def start(*skill_name)
-        new_skill = skill_name.join(' ')
-        response= SessionService.new.start_practice_session(new_skill)
+        session_skill = skill_name.join(' ')
+        response= SessionService.new.start_practice_session(session_skill)
         puts response["response"]
       end
-
 
     desc "stop SKILL_NAME", "stops a pratice session"
       def stop(*skill_name)
-        new_skill = skill_name.join(' ')
-        response= SessionService.new.stop_practice_session(new_skill)
+        session_skill = skill_name.join(' ')
+        response= SessionService.new.stop_practice_session(session_skill)
         puts response["response"]
       end
-
 
 end

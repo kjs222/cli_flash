@@ -2,7 +2,6 @@ require 'rspec'
 require 'faraday'
 require './lib/authentication_service.rb'
 require_relative 'token.rb'
-require 'pry'
 
 describe "AuthenticationService" do
   it "gets credentials from API for an existing user with correct credentials" do

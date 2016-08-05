@@ -42,10 +42,8 @@ describe "QuizletService" do
 
   it "get terms given a title" do
     qs = QuizletService.new("kjs222", TOKEN)
-    # VCR.use_cassette("terms") do
       terms = qs.get_terms_in_set("test")
       expect(terms.first["term"]).to eq("first name")
-    # end
   end
 
   it "adds a terms to a set given a title" do
