@@ -1,3 +1,12 @@
+CodePoints is a productivity app aimed at new programmers. It helps new learners set learning goals, track learning activities, see historical practice information, follow other users, and maximize the use of the Quizlet flashcard program to learn programming skills.
+
+This is the command line application to be used with the [codepoints webapp] (https://codepoints.herokuapp.com/).  You must activate the command line app from the website in order to use.
+
+This app uses the Thor gem and consumes the Quizlet API as well as the Codepoints API.
+
+See blog posts [here](https://www.turing.io/blog/2016/08/30/where-begin-solve-problem-you-know-well) and [here](https://medium.com/@KerrySheldon/customized-activity-feeds-in-rails-c6009f54c68b#.qlw033uci) for more information on the app.
+
+
 ### Getting Started
 
 This is the command line application to be used with the [codepoints app] (https://codepoints.herokuapp.com/).  You must activate the command line app from the website in order to use.
